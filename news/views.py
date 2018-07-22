@@ -1,7 +1,6 @@
-from django.shortcuts import render
 import random
-from .models import NewsItem
 from faker import Faker
+from django.shortcuts import render
 
 def index(request):
 	fk = Faker()
@@ -11,7 +10,7 @@ def index(request):
 	currency_name = [fk.currency_name() for i in range(1000)]
 
 	my_dict = {
-		'sentences': [1,2,3,4,5],
+		'sentences': range(6),
 		'sentence_one' : "%s got arrested in %s " % (random.choice(name), random.choice(city)),
 		'sentence_two' : "%s have %d %s and did nothing wrong" % (random.choice(name), random.randint(1, 100000000), random.choice(currency_name)),
 		'sentence_three' : "Acording to Swedish scientists the people in %s lives at least %d more years than the people in %s" % (random.choice(city), random.randint(2,100), random.choice(city)),
